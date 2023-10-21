@@ -1,4 +1,6 @@
-const CARDS_COUNT: number = 5;
+const CARDS_COUNT: number = 2;
+
+const APP_NAME: string = '6 cities';
 
 enum AppRoute {
   Root = '/',
@@ -14,4 +16,4 @@ enum AuthorizationStatus {
   Unknown = 'UNKNOWN',
 }
 
-export { CARDS_COUNT, AppRoute, AuthorizationStatus };
+export { CARDS_COUNT, AppRoute, AuthorizationStatus, APP_NAME };
