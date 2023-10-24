@@ -42,17 +42,18 @@ function Offer({ offers }: OffersProps): JSX.Element {
           <div className="offer__container container">
             <div className="offer__wrapper">
               {foundOffer.isPremium && (
-                <div className="place-card__mark">
+                <div className="offer__mark">
                   <span>Premium</span>
                 </div>
               )}
               <div className="offer__name-wrapper">
-                <h1 className="offer__name">
-                  {foundOffer.title}
-                </h1>
-                <button className={classNames('offer__bookmark-button', 'button', {
-                  'place-card__bookmark-button--active': foundOffer.isFavorite,
-                })} type="button"
+                <h1 className="offer__name">{foundOffer.title}</h1>
+                <button
+                  className={classNames('offer__bookmark-button', 'button', {
+                    'place-card__bookmark-button--active':
+                      foundOffer.isFavorite,
+                  })}
+                  type="button"
                 >
                   <svg className="offer__bookmark-icon" width="31" height="33">
                     <use xlinkHref="#icon-bookmark"></use>
@@ -62,10 +63,15 @@ function Offer({ offers }: OffersProps): JSX.Element {
               </div>
               <div className="offer__rating rating">
                 <div className="offer__stars rating__stars">
-                  <span style={{ width: `${Math.round(foundOffer.rating) * 20}%` }}></span>
+                  <span
+                    style={{ width: `${Math.round(foundOffer.rating) * 20}%` }}
+                  >
+                  </span>
                   <span className="visually-hidden">Rating</span>
                 </div>
-                <span className="offer__rating-value rating__value">{foundOffer.rating}</span>
+                <span className="offer__rating-value rating__value">
+                  {foundOffer.rating}
+                </span>
               </div>
               <ul className="offer__features">
                 <li className="offer__feature offer__feature--entire">
@@ -86,7 +92,9 @@ function Offer({ offers }: OffersProps): JSX.Element {
                 <h2 className="offer__inside-title">What&apos;s inside</h2>
                 <ul className="offer__inside-list">
                   {foundOffer.goods.map((good) => (
-                    <li key={good} className="offer__inside-item">{good}</li>
+                    <li key={good} className="offer__inside-item">
+                      {good}
+                    </li>
                   ))}
                 </ul>
               </div>
@@ -102,13 +110,15 @@ function Offer({ offers }: OffersProps): JSX.Element {
                       alt="Host avatar"
                     />
                   </div>
-                  <span className="offer__user-name">{foundOffer.host.name}</span>
-                  <span className="offer__user-status">{foundOffer.host.isPro}</span>
+                  <span className="offer__user-name">
+                    {foundOffer.host.name}
+                  </span>
+                  <span className="offer__user-status">
+                    {foundOffer.host.isPro}
+                  </span>
                 </div>
                 <div className="offer__description">
-                  <p className="offer__text">
-                    {foundOffer.description}
-                  </p>
+                  <p className="offer__text">{foundOffer.description}</p>
                 </div>
               </div>
               <section className="offer__reviews reviews">
