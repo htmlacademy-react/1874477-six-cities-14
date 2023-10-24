@@ -8,7 +8,7 @@ type ServerOffer = {
   description: string;
   goods: string[];
   host: User;
-  id: number;
+  id: string;
   images: string[];
   isFavorite: boolean;
   isPremium: boolean;

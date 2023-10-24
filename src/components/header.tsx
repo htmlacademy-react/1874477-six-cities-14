@@ -19,10 +19,10 @@ function Header(): JSX.Element {
                   <span className="header__user-name user__name">
                     Oliver.conner@gmail.com
                   </span>
-                  <span className="header__favorite-count">
-                    <Link to={AppRoute.Favorites}>3</Link>
-                  </span>
                 </a>
+                <span className="header__favorite-count">
+                  <Link to={AppRoute.Favorites}>3</Link>
+                </span>
               </li>
               <li className="header__nav-item">
                 <a className="header__nav-link" href="#">

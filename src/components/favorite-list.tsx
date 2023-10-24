@@ -27,11 +27,11 @@ function FavoriteList({
           <div className="favorites__places">
             {offers.map((offer) => (
               <article key={offer.id} className="favorites__card place-card">
-                {offer.isPremium ? (
+                {offer.isPremium && (
                   <div className="place-card__mark">
                     <span>Premium</span>
                   </div>
-                ) : null}
+                )}
                 <div className="favorites__image-wrapper place-card__image-wrapper">
                   <a href="#">
                     <img

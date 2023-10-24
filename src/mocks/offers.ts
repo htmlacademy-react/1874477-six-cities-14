@@ -40,7 +40,7 @@ const Offers: ServerOffer[] = [{
     'Washer'
   ],
   'host': {
-    'id': 25,
+    'id': '25',
     'name': 'Angelina',
     'isPro': true,
     'avatarUrl': 'img/avatar-angelina.jpg'
@@ -51,7 +51,7 @@ const Offers: ServerOffer[] = [{
     'longitude': 4.902976,
     'zoom': 16
   },
-  'id': 2
+  'id': '2'
 },
 {
   'city': {
@@ -97,7 +97,7 @@ const Offers: ServerOffer[] = [{
     'Washer'
   ],
   'host': {
-    'id': 25,
+    'id': '25',
     'name': 'Angelina',
     'isPro': true,
     'avatarUrl': 'img/avatar-angelina.jpg'
@@ -108,7 +108,7 @@ const Offers: ServerOffer[] = [{
     'longitude': 9.975654,
     'zoom': 16
   },
-  'id': 5
+  'id': '5'
 },
 {
   'city': {
@@ -154,7 +154,7 @@ const Offers: ServerOffer[] = [{
     'Baby seat'
   ],
   'host': {
-    'id': 25,
+    'id': '25',
     'name': 'Angelina',
     'isPro': true,
     'avatarUrl': 'img/avatar-angelina.jpg'
@@ -165,7 +165,7 @@ const Offers: ServerOffer[] = [{
     'longitude': 6.937974,
     'zoom': 16
   },
-  'id': 7
+  'id': '7'
 },
 {
   'city': {
@@ -214,7 +214,7 @@ const Offers: ServerOffer[] = [{
     'Towels'
   ],
   'host': {
-    'id': 25,
+    'id': '25',
     'name': 'Angelina',
     'isPro': true,
     'avatarUrl': 'img/avatar-angelina.jpg'
@@ -225,7 +225,7 @@ const Offers: ServerOffer[] = [{
     'longitude': 9.975654,
     'zoom': 16
   },
-  'id': 9
+  'id': '9'
 },
 {
   'city': {
@@ -274,7 +274,7 @@ const Offers: ServerOffer[] = [{
     'Towels'
   ],
   'host': {
-    'id': 23,
+    'id': '23',
     'name': 'Angelina',
     'isPro': true,
     'avatarUrl': 'img/avatar-angelina.jpg'
@@ -285,7 +285,7 @@ const Offers: ServerOffer[] = [{
     'longitude': 9.975654,
     'zoom': 16
   },
-  'id': 12
+  'id': '12'
 }
 ];
 

@@ -2,7 +2,7 @@ const CARDS_COUNT: number = 2;
 
 const APP_NAME: string = '6 cities';
 
-enum AppRoute {
+const enum AppRoute {
   Root = '/',
   Login = '/login',
   Offer = '/offer/:id',
@@ -10,7 +10,7 @@ enum AppRoute {
   Error = '/error'
 }
 
-enum AuthorizationStatus {
+const enum AuthorizationStatus {
   Auth = 'AUTH',
   NoAuth = 'NO_AUTH',
   Unknown = 'UNKNOWN',
