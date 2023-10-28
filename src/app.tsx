@@ -7,12 +7,14 @@ import Favorities from './pages/favorities';
 import Error from './pages/error';
 import PrivateRoute from './components/private-route';
 import { ServerOffer } from './types/offer';
+import { Review } from './types/review';
 
 type AppScreenProps = {
   offers: ServerOffer[];
+  reviews: Review[];
 }
 
-function App({offers}: AppScreenProps): JSX.Element {
+function App({offers, reviews}: AppScreenProps): JSX.Element {
   return (
     <BrowserRouter>
       <Routes>
@@ -22,7 +24,7 @@ function App({offers}: AppScreenProps): JSX.Element {
           <PrivateRoute authorizationStatus={AuthorizationStatus.Auth}><Favorities offers={offers} /></PrivateRoute>
         }
         />
-        <Route path={AppRoute.Offer} element={<Offer offers={offers} />} />
+        <Route path={AppRoute.Offer} element={<Offer offers={offers} reviews={reviews} />} />
         <Route path="*" element={<Error />} />
       </Routes>
     </BrowserRouter>

@@ -3,7 +3,7 @@ import { User } from './user';
 type Review = {
   comment: string;
   date: string;
-  id: number;
+  id: string;
   rating: number;
   user: User;
 };

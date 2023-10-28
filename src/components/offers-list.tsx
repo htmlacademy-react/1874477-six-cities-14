@@ -1,13 +1,18 @@
+import { CITY_MAP } from '../const';
 import { ServerOffer } from '../types/offer';
 import Card from './card';
-import { useState } from 'react';
+import Map from './map';
+import { useEffect, useState } from 'react';
 
 type OffersListProps = {
   offers: ServerOffer[];
+  city: string;
 };
 
-function OffersList({ offers }: OffersListProps): JSX.Element {
+function OffersList({ offers, city }: OffersListProps): JSX.Element {
   const [offersData, setOffersData] = useState(offers);
+  const [activeOffersId, setActiveOffersId] = useState<string | null>(null);
+  const cityMap = CITY_MAP[city];
 
   const handleFavoriteChange = (id: string, isFavorite: boolean) => {
     const updatedOffers = offersData.map((offer) => {
@@ -19,6 +24,18 @@ function OffersList({ offers }: OffersListProps): JSX.Element {
     setOffersData(updatedOffers);
   };
 
+  const handleMouseEnter = (id: string) => {
+    setActiveOffersId(id);
+  };
+
+  const handleMouseLeave = () => {
+    setActiveOffersId(null);
+  };
+
+  useEffect(() => {
+    setOffersData(offers);
+  }, [offers]);
+
   return (
     <div className="cities__places-container container">
       <section className="cities__places places">
@@ -27,7 +44,7 @@ function OffersList({ offers }: OffersListProps): JSX.Element {
           {offers.length > 1
             ? `${offers.length} places`
             : `${offers.length} place`}{' '}
-          to stay in Amsterdam
+          to stay in {city}
         </b>
         <form className="places__sorting" action="#" method="get">
           <span className="places__sorting-caption">Sort by</span>
@@ -58,12 +75,19 @@ function OffersList({ offers }: OffersListProps): JSX.Element {
               key={offer.id}
               offer={offer}
               handleFavoriteChange={handleFavoriteChange}
+              onMouseEnter={handleMouseEnter}
+              onMouseLeave={handleMouseLeave}
             />
           ))}
         </div>
       </section>
       <div className="cities__right-section">
-        <section className="cities__map map"></section>
+        <Map
+          key={city}
+          city={cityMap}
+          points={offersData}
+          activePoint={activeOffersId}
+        />
       </div>
     </div>
   );

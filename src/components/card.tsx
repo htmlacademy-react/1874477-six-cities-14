@@ -7,21 +7,22 @@ import classNames from 'classnames';
 type CardProps = {
   offer: ServerOffer;
   handleFavoriteChange: (id: string, isFavorite: boolean) => void;
-};
+  onMouseEnter: (id: string) => void;
+  onMouseLeave: () => void;
+}
 
-function Card({ offer, handleFavoriteChange }: CardProps): JSX.Element {
+function Card({ offer, handleFavoriteChange, onMouseEnter, onMouseLeave }: CardProps): JSX.Element {
   const handleFavoriteClick = () => {
     const newIsFavorite = !offer.isFavorite;
     handleFavoriteChange(offer.id, newIsFavorite);
   };
 
-  const mouseOverHandler = () => {
-    // eslint-disable-next-line no-console
-    // console.log(offer.id);
+  const handleMouseEnter: React.MouseEventHandler<HTMLDivElement> = () => {
+    onMouseEnter?.(offer.id);
   };
 
   return (
-    <article onMouseOver={mouseOverHandler} className="cities__card place-card">
+    <article onMouseOver={handleMouseEnter} onMouseLeave={onMouseLeave} className="cities__card place-card">
       {offer.isPremium && (
         <div className="place-card__mark">
           <span>Premium</span>

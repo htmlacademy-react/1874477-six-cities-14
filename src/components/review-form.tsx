@@ -1,11 +1,39 @@
+import { useState, useRef } from 'react';
+
 function ReviewForm(): JSX.Element {
+  const initialFormData = {
+    rating: '',
+    review: '',
+  };
+
+  const formRef = useRef<HTMLFormElement>(null);
+
+  const [formData, setFormData] = useState(initialFormData);
+
+  const handleFieldChange = (
+    evt: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
+    const { name, value } = evt.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const hadleFormSubmit = (evt: React.FormEvent) => {
+    evt.preventDefault();
+    setFormData(initialFormData);
+    formRef.current?.reset();
+  };
+
+  const isSubmitDisabled =
+    formData.review.length < 50 || formData.rating === '';
+
   return (
-    <form className="reviews__form form" action="#" method="post">
+    <form onSubmit={hadleFormSubmit} ref={formRef} className="reviews__form form" action="#" method="post">
       <label className="reviews__label form__label" htmlFor="review">
         Your review
       </label>
       <div className="reviews__rating-form form__rating">
         <input
+          onChange={handleFieldChange}
           className="form__rating-input visually-hidden"
           name="rating"
           value="5"
@@ -23,6 +51,7 @@ function ReviewForm(): JSX.Element {
         </label>
 
         <input
+          onChange={handleFieldChange}
           className="form__rating-input visually-hidden"
           name="rating"
           value="4"
@@ -40,6 +69,7 @@ function ReviewForm(): JSX.Element {
         </label>
 
         <input
+          onChange={handleFieldChange}
           className="form__rating-input visually-hidden"
           name="rating"
           value="3"
@@ -57,6 +87,7 @@ function ReviewForm(): JSX.Element {
         </label>
 
         <input
+          onChange={handleFieldChange}
           className="form__rating-input visually-hidden"
           name="rating"
           value="2"
@@ -74,6 +105,7 @@ function ReviewForm(): JSX.Element {
         </label>
 
         <input
+          onChange={handleFieldChange}
           className="form__rating-input visually-hidden"
           name="rating"
           value="1"
@@ -91,9 +123,11 @@ function ReviewForm(): JSX.Element {
         </label>
       </div>
       <textarea
+        onChange={handleFieldChange}
         className="reviews__textarea form__textarea"
         id="review"
         name="review"
+        minLength={50}
         placeholder="Tell how was your stay, what you like and what can be improved"
       >
       </textarea>
@@ -106,7 +140,7 @@ function ReviewForm(): JSX.Element {
         <button
           className="reviews__submit form__submit button"
           type="submit"
-          disabled
+          disabled={isSubmitDisabled}
         >
           Submit
         </button>

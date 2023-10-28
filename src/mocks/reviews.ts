@@ -2,11 +2,11 @@ import { Review } from '../types/review';
 
 const Comments: Review[] = [
   {
-    'id': 1,
+    'id': '1',
     'rating': 4,
     'user': {
       'avatarUrl': 'img/1.png',
-      'id': 1,
+      'id': '1',
       'isPro': false,
       'name': 'Oliver.conner'
     },
@@ -14,9 +14,9 @@ const Comments: Review[] = [
     'date': 'Sat Oct 21 2023 17:56:58 GMT+0300 (Москва, стандартное время)'
   },
   {
-    'id': 3,
+    'id': '3',
     'user': {
-      'id': 13,
+      'id': '13',
       'isPro': false,
       'name': 'Zak',
       'avatarUrl': 'https://14.react.pages.academy/static/avatar/4.jpg'
@@ -26,9 +26,9 @@ const Comments: Review[] = [
     'date': '2023-09-30T09:23:20.316Z'
   },
   {
-    'id': 2,
+    'id': '2',
     'user': {
-      'id': 15,
+      'id': '15',
       'isPro': false,
       'name': 'Kendall',
       'avatarUrl': 'https://14.react.pages.academy/static/avatar/6.jpg'
