@@ -73,6 +73,7 @@ function OffersList({ offers, city }: OffersListProps): JSX.Element {
           {offersData.map((offer) => (
             <Card
               key={offer.id}
+              isMainScreen
               offer={offer}
               handleFavoriteChange={handleFavoriteChange}
               onMouseEnter={handleMouseEnter}

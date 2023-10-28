@@ -7,11 +7,13 @@ import classNames from 'classnames';
 type CardProps = {
   offer: ServerOffer;
   handleFavoriteChange: (id: string, isFavorite: boolean) => void;
-  onMouseEnter: (id: string) => void;
-  onMouseLeave: () => void;
+  onMouseEnter?: (id: string) => void;
+  onMouseLeave?: () => void;
+  isMainScreen?: boolean;
+  isFavoriteScreen?: boolean;
 }
 
-function Card({ offer, handleFavoriteChange, onMouseEnter, onMouseLeave }: CardProps): JSX.Element {
+function Card({ offer, handleFavoriteChange, onMouseEnter, onMouseLeave, isMainScreen, isFavoriteScreen }: CardProps): JSX.Element {
   const handleFavoriteClick = () => {
     const newIsFavorite = !offer.isFavorite;
     handleFavoriteChange(offer.id, newIsFavorite);
@@ -21,25 +23,33 @@ function Card({ offer, handleFavoriteChange, onMouseEnter, onMouseLeave }: CardP
     onMouseEnter?.(offer.id);
   };
 
+  let eventHandlers = {};
+  if (isMainScreen) {
+    eventHandlers = {
+      onMouseOver: handleMouseEnter,
+      onMouseLeave: onMouseLeave
+    };
+  }
+
   return (
-    <article onMouseOver={handleMouseEnter} onMouseLeave={onMouseLeave} className="cities__card place-card">
+    <article {...eventHandlers} className={classNames({'cities__card': isMainScreen},{'favorites__card': isFavoriteScreen}, 'place-card')}>
       {offer.isPremium && (
         <div className="place-card__mark">
           <span>Premium</span>
         </div>
       )}
-      <div className="cities__image-wrapper place-card__image-wrapper">
+      <div className={classNames({'cities__image-wrapper': isMainScreen},{'favorites__image-wrapper': isFavoriteScreen}, 'place-card__image-wrapper')}>
         <Link to={`${AppRoute.Offer.replace(':id', offer.id)}`}>
           <img
             className="place-card__image"
             src={offer.previewImage}
-            width="260"
-            height="200"
+            width={isFavoriteScreen ? '150' : '260'}
+            height={isFavoriteScreen ? '110' : '200'}
             alt="Place image"
           />
         </Link>
       </div>
-      <div className="place-card__info">
+      <div className={classNames({'favorites__card-info': isFavoriteScreen}, 'place-card__info')}>
         <div className="place-card__price-wrapper">
           <div className="place-card__price">
             <b className="place-card__price-value">&euro;{offer.price}</b>
@@ -55,7 +65,7 @@ function Card({ offer, handleFavoriteChange, onMouseEnter, onMouseLeave }: CardP
             <svg className="place-card__bookmark-icon" width="18" height="19">
               <use xlinkHref="#icon-bookmark"></use>
             </svg>
-            <span className="visually-hidden">To bookmarks</span>
+            <span className="visually-hidden">{isFavoriteScreen ? 'In' : 'To'} bookmarks</span>
           </button>
         </div>
         <div className="place-card__rating rating">
