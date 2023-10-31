@@ -6,6 +6,7 @@ import { capitalizeFirstLetter } from '../utils/utils';
 import classNames from 'classnames';
 import ReviewForm from '../components/review-form';
 import ReviewList from '../components/review-list';
+import Map from '../components/map';
 import { Review } from '../types/review';
 
 interface OffersProps {
@@ -127,14 +128,21 @@ function Offer({ offers, reviews }: OffersProps): JSX.Element {
               </div>
               <section className="offer__reviews reviews">
                 <h2 className="reviews__title">
-                  Reviews &middot; <span className="reviews__amount">{reviews.length}</span>
+                  Reviews &middot;{' '}
+                  <span className="reviews__amount">{reviews.length}</span>
                 </h2>
                 <ReviewList reviews={reviews} />
                 <ReviewForm />
               </section>
             </div>
           </div>
-          <section className="offer__map map"></section>
+          <Map
+            key={foundOffer.id}
+            className={'offer__map'}
+            city={foundOffer.city}
+            points={offers}
+            activePoint={'2'}
+          />
         </section>
         <div className="container">
           <section className="near-places places">
