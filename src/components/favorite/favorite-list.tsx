@@ -41,6 +41,7 @@ function FavoriteList({
                 key={offer.id}
                 screenName="favorites"
                 offer={offer}
+                isAuth
                 handleFavoriteChange={handleFavoriteChange}
               />
             ))}
