@@ -77,8 +77,6 @@ export const favoriteOffersSlice = createSlice({
         default:
           break;
       }
-
-      fetchFavoriteOffers();
     });
   }
 });

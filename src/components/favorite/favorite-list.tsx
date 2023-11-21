@@ -5,6 +5,7 @@ import { Card } from '../card/card';
 import { useAppDispatch } from '../../hooks/store';
 import { offersAction } from '../../store/slice/offers';
 import { favoriteOffersAction, favoriteOffersExtraAction } from '../../store/slice/favorite';
+import { useEffect } from 'react';
 
 type FavoriteListProps = {
   city: City;
@@ -23,6 +24,10 @@ function FavoriteList({
     dispatch(favoriteOffersAction.removeFavorite(id));
     dispatch(favoriteOffersExtraAction.setFavoriteOffer({offerId: id, status: 0}));
   };
+
+  useEffect(() => {
+    dispatch(favoriteOffersExtraAction.fetchFavoriteOffers());
+  }, [favoriteList, dispatch]);
 
   return (
     <ul className="favorites__list">
