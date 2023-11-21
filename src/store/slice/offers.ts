@@ -33,7 +33,6 @@ const processSuccess = (state: OffersState, action: PayloadAction<ServerOffer[]>
   state.isOffersLoading = false;
 };
 
-
 const processFailed = (state: OffersState) => {
   state.isOffersLoading = false;
   state.redirectToErrorPage = true;
