@@ -27,7 +27,7 @@ function FavoriteList({
 
   useEffect(() => {
     dispatch(favoriteOffersExtraAction.fetchFavoriteOffers());
-  }, [favoriteList, dispatch]);
+  }, [dispatch]);
 
   return (
     <ul className="favorites__list">
